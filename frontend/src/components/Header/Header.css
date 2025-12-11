@@ -1,0 +1,13 @@
+.header {
+  height: 34vw;
+  margin: 30px auto;
+  background: url("/headerImg.jpg") no-repeat;
+  /* background-size: contain; */
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  /* width: 100vw; */
+  /* width: cover; */
+  border-radius: 20px;
+  overflow: hidden;
+}
