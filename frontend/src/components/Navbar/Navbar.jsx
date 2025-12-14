@@ -10,7 +10,10 @@ const Navbar = ({ setShowLogin }) => {
   return (
     // <div className="navbar">{<img src={assets.logo} alt="" srcset="" />}</div>
     <div className="navbar">
-      <span className="text-5xl font-bold text-amber-600 w-auto cursor-pointer">
+      <span
+        to="/"
+        className="text-5xl font-bold text-amber-600 w-auto cursor-pointer"
+      >
         Live Bakery
       </span>
       <ul className="navbar-menu">
