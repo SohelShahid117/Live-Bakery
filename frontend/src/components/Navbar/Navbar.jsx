@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { assets } from "./../../assets/assets";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   return (
     // <div className="navbar">{<img src={assets.logo} alt="" srcset="" />}</div>
@@ -11,36 +12,41 @@ const Navbar = () => {
         Live Bakery
       </span>
       <ul className="navbar-menu">
-        <li
+        <Link
+          to="/"
           onClick={() => setMenu("home")}
           className={menu === "home" ? "active" : ""}
         >
           Home
-        </li>
-        <li
+        </Link>
+        <a
+          href="#explore-menu"
           onClick={() => setMenu("menu")}
           className={menu === "menu" ? "active" : ""}
         >
           Menu
-        </li>
-        <li
+        </a>
+        <a
+          href="#app-download"
           onClick={() => setMenu("mobileApp")}
           className={menu === "mobileApp" ? "active" : ""}
         >
           Mobile App
-        </li>
-        <li
+        </a>
+        <a
+          href=""
           onClick={() => setMenu("aboutUs")}
           className={menu === "aboutUs" ? "active" : ""}
         >
           About Us
-        </li>
-        <li
+        </a>
+        <a
+          href="#footer"
           onClick={() => setMenu("contactUs")}
           className={menu === "contactUs" ? "active" : ""}
         >
           Contact Us
-        </li>
+        </a>
       </ul>
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
@@ -48,7 +54,12 @@ const Navbar = () => {
           <img src={assets.basket_icon} alt="" />
           <div className="dot bg-amber-600"></div>
         </div>
-        <button className="border 1px border-amber-600">Sign In</button>
+        <button
+          onClick={() => setShowLogin(true)}
+          className="border 1px border-amber-600"
+        >
+          Sign In
+        </button>
       </div>
     </div>
   );
