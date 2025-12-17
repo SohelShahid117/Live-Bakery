@@ -1,24 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import { assets } from "../../assets/assets";
+import "./Add.css";
 
 const Add = () => {
+  const [image, setImage] = useState(false);
+  const [data, setData] = useState({
+    name: "",
+    description: "",
+    price: "",
+    category: "salad",
+  });
+
+  const onChangeHandler = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setData((data) => ({ ...data, [name]: value }));
+  };
+
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    console.log(event);
+  };
+
   return (
     <div className="add">
-      <form className="flex-col">
+      <form className="flex-col" onSubmit={onSubmitHandler}>
         <div className="add-img-upload flex-col">
           <p>Upload Image</p>
           <label htmlFor="image">
-            <img src={assets.upload_area} alt="" />
+            <img
+              src={image ? URL.createObjectURL(image) : assets.upload_area}
+              alt=""
+            />
           </label>
-          <input type="file" name="" id="image" hidden required />
+          <input
+            onChange={(e) => setImage(e.target.files[0])}
+            type="file"
+            name=""
+            id="image"
+            hidden
+            required
+          />
         </div>
         <div className="add-product-name flex-col">
           <p>Product Name</p>
-          <input type="text" name="name" id="" placeholder="Type here" />
+          <input
+            onChange={onChangeHandler}
+            value={data.name}
+            type="text"
+            name="name"
+            id=""
+            placeholder="Type here"
+          />
         </div>
         <div className="add-product-description flex-col">
           <p>Product Description</p>
           <textarea
+            onChange={onChangeHandler}
+            value={data.description}
             name="description"
             id="description"
             rows="6"
@@ -29,7 +72,7 @@ const Add = () => {
         <div className="add-category-price">
           <div className="add-category flex-col">
             <p>Product Category</p>
-            <select name="category">
+            <select name="category" onChange={onChangeHandler}>
               <option value="Salad">Salad</option>
               <option value="Rolls">Rolls</option>
               <option value="Deserts">Deserts</option>
@@ -42,7 +85,14 @@ const Add = () => {
           </div>
           <div className="add-price flex-col">
             <p>Product Price</p>
-            <input type="number" name="price" id="" placeholder="$20" />
+            <input
+              onChange={onChangeHandler}
+              value={data.price}
+              type="number"
+              name="price"
+              id=""
+              placeholder="$20"
+            />
           </div>
         </div>
         <button type="submit" className="add-btn">

@@ -14,7 +14,7 @@ const Navbar = () => {
           Live Bakery
         </span>
         <br />
-        <span>Admin</span>
+        <span>Admin Panel</span>
       </p>
       {/* <img className="logo" src={assets.logo} alt="" /> */}
       <img className="profile" src={assets.profile_image} alt="" />
